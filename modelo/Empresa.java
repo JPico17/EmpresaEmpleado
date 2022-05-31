@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 public class Empresa
@@ -21,7 +22,7 @@ public class Empresa
     //--------------------------
     
     //Constructor
-    public Empresa(Double tPagar, int hMensual, Calendar fNacimiento, Calendar fIngreso)
+    public Empresa(double tPagar, double hMensual, Calendar fNacimiento, Calendar fIngreso)
     {
         this.totalPagar = tPagar;
         this.horasMensuales = hMensual;
@@ -29,13 +30,13 @@ public class Empresa
         this.fechaIngreso = fIngreso;
         this.salario = 0;
     }
-    
+
     public double getPagar()
     {
         return this.totalPagar;
     }
     
-    public int getMesual()
+    public double getMesual()
     {
         return this.horasMensuales;
     }
@@ -74,11 +75,6 @@ public class Empresa
     {
         return salario;
     }
-    public void hallarSalario()
-    {
-        
-    } 
-
     public void hallarHoras()
     {
         horasMensuales = (double) salario;      
@@ -97,25 +93,27 @@ public class Empresa
             System.out.println("Su sueldo es : " + salario);               
         }    
     }
-    public int hallarFNacimineto(int dia, int mes, int anio)
-    {
-	
-		if (ahora.get(Calendar.YEAR) >= ( fechaNacimiento ).get(Calendar.YEAR)) 
+
+ 
+    public int calcularEdad()
+    {  
+        Calendar ahora = new GregorianCalendar();
+        if (ahora.get(Calendar.YEAR) >= ( fechaNacimiento ).get(Calendar.YEAR)) 
         {
-			 if (ahora.get(Calendar.MONTH) >= fechaNacimiento.get(Calendar.MONTH)) 
-             {
-				return ahora.get(Calendar.YEAR) - (fechaNacimiento).get(Calendar.YEAR);
-			}
-			else
+            if (ahora.get(Calendar.MONTH) >= fechaNacimiento.get(Calendar.MONTH)) 
+            {
+                return ahora.get(Calendar.YEAR) - (fechaNacimiento).get(Calendar.YEAR);
+            }
+            else
             {
                 return ahora.get(Calendar.YEAR) - (fechaNacimiento).get(Calendar.YEAR) - 1;
             }
-		}
-		else
+        }
+        else
         {
             return 0;
         }
-	    
+
     }
 
 }
